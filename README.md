@@ -1,14 +1,23 @@
-# NDVI-with-modified-Mobius-cameras
+# Vegetation_indices_with_modified_Mobius_cameras
 
-Here is presented scripts for rectification, calibration and computation of NDVI with RGB and NIR imagery from Mobius cameras
+Here we present the complete process to obtain aerial visible (RGB) and near-infrared (NIR) imagery from a *"dual-spectrum system"* based on: a modified Mobius camera + opensource software. This process is part of a new major version of the research cited as follows:
 
-* First, two undistort scripts are used to rectify RGB and NIR imagery. (undistort_inf.py and undistort_nor.py)
+A. M. de Oca, L. Arreola, A. Flores, J. Sanchez and G. Flores, "Low-cost multispectral imaging system for crop monitoring," 2018 International Conference on Unmanned Aircraft Systems (ICUAS), Dallas, TX, USA, 2018, pp. 443-451, doi: 10.1109/ICUAS.2018.8453426.
 
-* Once the RGB and NIR orthomosaics are obtained through OpenDroneMap, these are calibrated. Calibration is done individually to red and near-infrared bands and saved as new orthomosaics (Red and Near-infrared). After that, these orthomosaics are aligned. (calibration.py)
+The capture process is performed with a Raspberry Pi 3 through the python script "capture.py". Once the imagery is collected we perform the offline following processes:
 
-* Finally, the NDVI can be computed. (getndvi.py)
+* Rectification of the imagery to remove distortion: two undistort scripts (one for RGB and other for NIR imagery) are used to rectify the imagery (undistort_inf.py and undistort_nor.py).
+
+* Georeference: the rectified imagery is georeferenced with Mission Planner using the log file of the flight. This process is done extracting GPS coordinates from   the image captures during the flight (https://ardupilot.org/planner/docs/mission-planner-installation.html).
+
+* Orthomosaic reconstruction: we do it uploading the gerectified imagery to OpenDroneMap (https://www.opendronemap.org/webodm/download/).
+
+* Reflectanctance calibration: once the RGB and NIR orthomosaics are obtained through OpenDroneMap, their pixel intensities are converted to reflectance. The calibration is done individually each bands and saved as new orthomosaics. After that, these orthomosaics are also aligned. (calibration.py)
+
+* Computation of vegetation indices (NDVI, EVI, OSAVI, GCI, GVI, MCARI1) with RGB and NIR imagery from the *dual-spectrum system* (getndvi.py).
 
 andresmr@cio.mx
-Andrés Montes de Oca
+Andrés Montes de Oca R.
 PhD student.
-CIO.
+Centro de Investigaciones en Óptica, A. C.
+León, Gto. Mexico.
