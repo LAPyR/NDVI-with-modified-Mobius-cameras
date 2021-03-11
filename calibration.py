@@ -54,20 +54,28 @@ nir, g2, r2 = cv2.split(img2)
 #new empty matrix for corrected reflectance images
 rnew = np.zeros((img.shape[0], img.shape[1],1),np.float32)
 nirnew = np.zeros((img.shape[0], img.shape[1],1),np.float32)
+gnew = np.zeros((img.shape[0], img.shape[1],1),np.float32)
+bnew = np.zeros((img.shape[0], img.shape[1],1),np.float32)
 
 #computation of the corrected reflectance values of the image intended to be calibrated (red and near-infrared bands)
 rnew= r*Fvalues.item(2)
 nirnew= nir*Fvalues.item(3)
+bnew= b*Fvalues.item(0)
+gnew= g*Fvalues.item(1)
+
 
 #Save image bands as TIF 
 imsave('float_arrays/calibrated_r.tif',rnew.astype(float))
 imsave('float_arrays/calibrated_nir.tif',nirnew.astype(float))
+imsave('float_arrays/calibrated_g.tif',gnew.astype(float))
+imsave('float_arrays/calibrated_b.tif',bnew.astype(float))
 
 # Read corrected orthomosaics (red and near-infrared) now to align both images
 calib_r = cv2.imread('float_arrays/calibrated_r.tif',2)   
 calib_nir = cv2.imread('float_arrays/calibrated_nir.tif',2) 
-calib_r=calib_r.astype('f4')
-calib_nir=calib_nir.astype('f4')  
+
+calib_r = calib_r.astype('f4')
+calib_nir = calib_nir.astype('f4')  
 
 # Find size of image1
 sz = rnew.shape
