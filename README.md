@@ -12,7 +12,7 @@ The capture process is performed with a Raspberry Pi 3 through the python script
 
 * Orthomosaic reconstruction: we do it uploading the gerectified imagery to OpenDroneMap (https://www.opendronemap.org/webodm/download/).
 
-* Reflectanctance calibration: once the RGB and NIR orthomosaics are obtained through OpenDroneMap, their pixel intensities are converted to reflectance. The calibration is done individually each bands and saved as new orthomosaics. After that, these orthomosaics are also aligned. (calibration.py)
+* Reflectanctance calibration: once the RGB and NIR orthomosaics are obtained through OpenDroneMap, their pixel intensities are converted to reflectance. Specifically for this process, it is needed a Calibration Reflectance Panel (CRP) as the one for the RedEdge-M from Micasense. Such CRP is.used to calibrate imagery with provided reflectance values for each band. The calibration is done individually each bands and saved as new orthomosaics. After that, these orthomosaics are also aligned. (calibration.py)
 
 * Computation of vegetation indices (NDVI, EVI, OSAVI, GCI, GVI, MCARI1) with RGB and NIR imagery from the *dual-spectrum system* (getndvi.py).
 
