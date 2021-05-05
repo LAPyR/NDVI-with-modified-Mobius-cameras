@@ -16,8 +16,6 @@ The capture process is performed with a Raspberry Pi 3 through the python script
 
 * Computation of vegetation indices (NDVI, EVI, OSAVI, GCI, GVI, MCARI1) with RGB and NIR imagery from the *dual-spectrum system* (getndvi.py).
 
-andresmr@cio.mx
-Andrés Montes de Oca R.
+andresmr@cio.mx <br />
+Andrés Montes de Oca <br />
 PhD student.
-Centro de Investigaciones en Óptica, A. C.
-León, Gto. Mexico.
